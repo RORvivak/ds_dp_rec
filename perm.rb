@@ -3,10 +3,15 @@ def fact(n)
   n*fact(n-1)
 end  
 def find_perm(nums, answer, set, count)
-    answer.push(set)  if nums.empty?
-    if count == answer.length
+     answer = answer.clone
+     if nums.empty?
+      p set
+      answer.push(set)
+      p answer.object_id
       p answer
-    end 
+      return true
+     end 
+    
       for i in (0..nums.length - 1) do
           new_nums = nums.clone
           new_nums.delete_at(i)
@@ -27,4 +32,4 @@ def permute(nums)
   return element
 end
 
-p permute([1,2,3])    
+permute([1,2,3])    
