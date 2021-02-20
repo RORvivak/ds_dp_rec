@@ -8,22 +8,17 @@
 #WHow many possible unique paths are there?
 
 
+# @param {Integer} m
+# @param {Integer} n
+# @return {Integer}
 def unique_paths(m, n)
-   rec_call(m,n,0,0,0)
-            
+   rec_call(m,n,0,0)
 end
 
-def rec_call(m,n,c_i,c_j,c)
-    
-   return 0 if c_i > m -1
-   return 0 if c_j > n - 1
-    for i in (c_i..m-1) do
-        for j in (c_j..n-1) do
-            c = c+1 if i == n -1 && j == m - 1
-            rec_call(m,n,i+1, j,c) 
-            rec_call(m,n,i, j+1,c)
-        end
-    end
-    p c
-    return c
+def rec_call(m,n,c_i,c_j) 
+   return 0 if c_i > m -1 || c_j > n - 1
+   return 1 if c_i == m -1 && c_j == n-1
+   count = 0
+   count =  rec_call(m,n,c_i+1, c_j) +  rec_call(m,n,c_i, c_j+1) + count
+   return count
 end    
