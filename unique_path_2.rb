@@ -1,6 +1,6 @@
 # @param {Integer[][]} grid
 # @return {Integer}
-64. Minimum Path Sum
+# 64. Minimum Path Sum
 
 def min_path_sum(grid)
     row_size = grid.length - 1
