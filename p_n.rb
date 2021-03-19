@@ -3,9 +3,10 @@
 
 def cal(string, result, dig, start)
   return string.join("") if string.length == dig.length
-  
+    
     for i in (start..dig.length-1) do
         for j in (0..dig[0].length-1) do
+            break if string.empty? && i == dig.length-1
             string << dig[i][j]
             result << cal(string, result, dig, start+1)
             string.pop
