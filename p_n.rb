@@ -7,6 +7,7 @@ def cal(string, result, dig, start)
     for i in (start..dig.length-1) do
         for j in (0..dig[0].length-1) do
             break if string.empty? && i == dig.length-1
+            p dig[i][j]
             string << dig[i][j]
             result << cal(string, result, dig, start+1)
             string.pop
@@ -19,7 +20,9 @@ end
  
 
 def letter_combinations(digits)
+    return [] if digits.empty?
     h = {2 => "abc", 3 => "def", 4=>"ghi", 5=>"jkl", 6=> "mno", 7=> "pqrs", 8=>"tuv", 9=>"wxyz"}
+    return h[digits.to_i].split("") if digits.length == 1
     
     mat = []
     digits.split("").each do |e|
@@ -30,4 +33,4 @@ def letter_combinations(digits)
     return r
 end
 
-p letter_combinations("23")
+p letter_combinations("243")
