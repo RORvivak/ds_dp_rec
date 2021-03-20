@@ -3,18 +3,16 @@
 
 def cal(string, result, dig, start)
   return string.join("") if string.length == dig.length
-    
     for i in (start..dig.length-1) do
-        for j in (0..dig[0].length-1) do
+        for j in (0..dig[i].length-1) do
             break if string.empty? && i == dig.length-1
-            p dig[i][j]
             string << dig[i][j]
-            result << cal(string, result, dig, start+1)
+            value  = cal(string, result, dig, i+1)
+            result << value if value.length == dig.length
             string.pop
         end
     end 
-    
-    return result
+    return result.reject{|r| r.class.to_s == "Array"}
     
 end
  
@@ -32,5 +30,4 @@ def letter_combinations(digits)
     r = cal([], [], mat,0)
     return r
 end
-
-p letter_combinations("243")
+p letter_combinations("234")
